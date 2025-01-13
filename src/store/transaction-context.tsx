@@ -9,6 +9,7 @@ type TransactionState = {
 type TransactionContextValue = {
   addTransaction: (transaction: Transaction) => void;
   deleteTransaction: (id: number) => void;
+  clearAllTransactions: () => void;
 } & TransactionState;
 
 const initialState: TransactionState = {
@@ -31,10 +32,19 @@ type DeleteTransactionAction = {
   };
 };
 
-type TransactionsActions = AddTransactionAction | DeleteTransactionAction;
+type ClearAllTransactionsAction = {
+  type: 'CLEAR_ALL_TRANSACTIONS';
+};
+
+type TransactionsActions =
+  | AddTransactionAction
+  | DeleteTransactionAction
+  | ClearAllTransactionsAction;
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const TransactionContext = createContext<TransactionContextValue | null>(null);
+export const TransactionContext = createContext<TransactionContextValue | null>(
+  null
+);
 
 function transactionReducer(
   state: TransactionState,
@@ -61,6 +71,11 @@ function transactionReducer(
         ),
       };
 
+    case 'CLEAR_ALL_TRANSACTIONS':
+      return {
+        transactions: [],
+      };
+
     default:
       return state;
   }
@@ -81,6 +96,9 @@ export default function TransactionContextProvider(
     },
     deleteTransaction(id) {
       dispatch({ type: 'DELETE_TRANSACTION', payload: { transactionId: id } });
+    },
+    clearAllTransactions() {
+      dispatch({ type: 'CLEAR_ALL_TRANSACTIONS' });
     },
   };
 
