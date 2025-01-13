@@ -17,9 +17,9 @@ export default function AllTransactions() {
         <img
           src={waitingImg}
           alt='zzz-image'
-          className='w-20 sm:w-28 mx-auto'
+          className='w-20 xl:w-24 2xl:w-28 mx-auto'
         />
-        <p className='mt-6'>NO TRANSACTION ADDED YET!</p>
+        <p className='mt-4'>NO TRANSACTION ADDED YET!</p>
       </aside>
     );
   } else {
@@ -33,7 +33,7 @@ export default function AllTransactions() {
   return (
     <Fragment>
       <section className='border-2 rounded-sm mb-8'>
-        <Chart transactions={transactions}/>
+        <Chart transactions={transactions} />
       </section>
       {transactionListContent}
     </Fragment>
