@@ -7,7 +7,7 @@ type TransactionListProps = {
 
 export default function TransactionList(props: TransactionListProps) {
   return (
-    <ul className='grid grid-cols-1 gap-4 sm:grid-cols-1 sm:gap-6 md:grid-cols-2 md:gap-16'>
+    <ul className='grid grid-cols-1 gap-4 sm:grid-cols-1 sm:gap-6 md:grid-cols-2 md:gap-8'>
       {props.transactions.map((transaction) => {
         return (
           <li key={transaction.id}>
