@@ -4,7 +4,7 @@ The Weekly Expense Keeper app lets the user to store transactions made throughou
 
 ## Tech Stack
 
-React, TypeScript & Tailwind CSS
+- React, TypeScript & Tailwind CSS
 
 ## Setup Instructions
 
