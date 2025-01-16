@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import hamburgerMenuIcon from '../../assets/icons/hamburger-menu.png';
 import MainNavModal from '../../utils/MainNavModal.tsx';
 
 export default function MainNavigation() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
 
   function handleHamburgerMenu() {
     setIsModalOpen((prevValue) => !prevValue);
@@ -24,10 +25,19 @@ export default function MainNavigation() {
           onClick={handleHamburgerMenu}
         />
         <ul className='hidden sm:flex gap-20'>
-          <li className='cursor-pointer hover:text-[#F8ED62] hover:font-bold hover:translate-y-[-0.1rem] transition-all duration-200'>
+          <li
+            className={`cursor-pointer ${
+              location.pathname === '/' && 'text-[#F8ED62] font-bold'
+            } hover:text-[#F8ED62] hover:translate-y-[-0.1rem] transition-all duration-200`}
+          >
             <Link to='/'>HOME</Link>
           </li>
-          <li className='cursor-pointer hover:text-[#F8ED62] hover:font-bold hover:translate-y-[-0.1rem] transition-all duration-200'>
+          <li
+            className={`cursor-pointer ${
+              location.pathname === '/new-transaction' &&
+              'text-[#F8ED62] font-bold'
+            } hover:text-[#F8ED62] hover:translate-y-[-0.1rem] transition-all duration-200`}
+          >
             <Link to='/new-transaction'>EXPENSE ENTRY</Link>
           </li>
         </ul>
